@@ -1,6 +1,6 @@
 # RPG Python 🎮
 
-Um jogo de RPG em Python desenvolvido para praticar os pilares da **Programação Orientada a Objetos (POO)**, com foco em abstração, herança.
+Um jogo de RPG em Python desenvolvido para praticar os pilares da **Programação Orientada a Objetos (POO)**, com foco em abstração e herança.
 
 ## 📋 Sobre o Projeto
 
