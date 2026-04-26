@@ -5,15 +5,13 @@ Um jogo de RPG de terminal em Python com **interface colorida e interativa**, de
 ## ✨ Demonstração
 
 ```
-╭─────────────────────────────────────────╮
-│                                         │
-│    ⚔️  BEM-VINDO AO COMBATE RPG!  ⚔️    │
-│                                         │
-╰─────────────────────────────────────────╯
+╭────────────────────────────────────────╮
+│  ⚔️  BEM-VINDO AO COMBATE RPG!  ⚔️   │
+╰────────────────────────────────────────╯
 
-╭───────────────────────────╮
-│  CRIAÇÃO DO PERSONAGEM 1  │
-╰───────────────────────────╯
+╭────────────────────────────────────────╮
+│     CRIAÇÃO DO PERSONAGEM 1            │
+╰────────────────────────────────────────╯
 
 Escolha sua classe:
   [1] Guerreiro (vida padrão: 1000)
@@ -22,21 +20,22 @@ Digite 1 ou 2: 1
 Digite o nome do Guerreiro: Kratos
 Digite a vida do personagem [1000]:
 
-╭─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── PERSONAGENS CRIADOS ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                                                                                                                                  🛡️    Guerreiro(nome='Kratos', vida=1000/1000)                                                                                                                                   │
-│                                                                                                                                  🔮    Mago(nome='Merlim', vida=1000/1000)                                                                                                                                        │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭────────────────────────────────────────╮
+│      🛡️ Guerreiro(nome='Kratos', ...   │
+│      🔮 Mago(nome='Merlim', ...)       │
+╰────────────────────────────────────────╯
 
 ⚔️  O COMBATE COMEÇOU!  ⚔️
 
-╭───────────────╮
-│    TURNO 1    │
-╰───────────────╯
+╭────────────────────────────────────────╮
+│              TURNO 1                   │
+╰────────────────────────────────────────╯
 
-╭──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── ⚔️  STATUS DO COMBATE  ⚔️ ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╮
-│                                                                                                                            Kratos          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1000/1000 HP                                                                                                                            │
-│                                                                                                                            Merlim          ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1000/1000 HP                                                                                                                            │
-╰───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────╯
+╭────────────────────────────────────────╮
+│  ⚔️  STATUS DO COMBATE  ⚔️             │
+│  Kratos   ████████████████ 1000/1000   │
+│  Merlim   ████████████████ 1000/1000   │
+╰────────────────────────────────────────╯
 
 ⏳ Merlim está preparando o ataque...
 
@@ -45,10 +44,14 @@ Digite a vida do personagem [1000]:
 
 💖 Kratos se curou! +4 HP | Vida: 379 → 383
 
-╭───────────────╮
-│    TURNO 2    │
-╰───────────────╯
+╭────────────────────────────────────────╮
+│              TURNO 2                   │
+╰────────────────────────────────────────╯
 ...
+
+╭────────────────────────────────────────╮
+│  🏆  Merlim VENCEU O COMBATE!  🏆      │
+╰────────────────────────────────────────╯
 ```
 
 ## 📋 Sobre o Projeto
@@ -56,7 +59,7 @@ Digite a vida do personagem [1000]:
 Este projeto implementa um sistema de combate RPG interativo onde você cria seus personagens e os coloca para batalhar em turnos. A interface é construída com a biblioteca **Rich**, proporcionando uma experiência visual imersiva no terminal com cores, painéis, barras de progresso e animações.
 
 O sistema inclui:
-- **Interface colorida com Rich**: painéis, barras de vida, tabelas e texto estilizado
+- **Interface colorida com Rich**: painéis de ~60 colunas, barras de vida, tabelas e texto estilizado
 - **Criação interativa de personagens**: escolha nome, vida e classe via terminal
 - **Sistema de batalha por turnos**: ataques, curas e vitória automática
 - **Mecânica de ataque** baseada em dados (D20), com críticos, falhas críticas e faixas de dano variáveis
@@ -78,7 +81,7 @@ rpg-python/
         ├── __init__.py
         ├── ficha.py             # Classe base Personagem (ABC)
         ├── batalha.py           # Classe Batalha — gerencia turnos e fluxo
-        ├── interface.py         # Interface visual com Rich
+        ├── interface.py         # Interface visual Rich (~60 col)
         └── personagens/
             ├── __init__.py
             ├── guerreiro.py     # Classe Guerreiro
@@ -120,8 +123,8 @@ python -m projetopy
 - **Mago**: Mestre das artes arcanas com golpes elementais (vida padrão: 1000)
 
 ### Interface Visual (Rich)
-- **Painéis estilizados** para boas-vindas, turnos e resultados
-- **Barras de vida** coloridas que atualizam a cada turno
+- **Painéis estilizados** (~60 colunas) para boas-vindas, turnos e resultados
+- **Barras de vida** coloridas que atualizam a cada turno (bar_width=25)
 - **Tabela de status final** com vencedor e dados dos personagens
 - **Cores dinâmicas**: dano alto em vermelho, cura em verde, críticos em amarelo
 - **Animações de preparação**: mensagens de suspense antes de ataques e curas
@@ -206,6 +209,7 @@ print(resultado_cura)
 ## 🛠️ Tecnologias e Boas Práticas
 
 - **[Rich](https://github.com/Textualize/rich)**: Biblioteca para interfaces de terminal modernas e coloridas
+- **Painéis responsivos**: Largura fixa de ~60 colunas para melhor visualização em terminais padrão
 - **Type Hints**: Anotações de tipo em todos os métodos e parâmetros
 - **Docstrings**: Documentação completa de classes e métodos
 - **Constantes**: Valores mágicos extraídos para constantes de classe nomeadas
@@ -217,7 +221,7 @@ print(resultado_cura)
 Este é o **Desafio 27** do curso de **Programação Orientada a Objetos em Python** do canal [Curso em Vídeo](https://www.cursoemvideo.com), ministrado pelo professor [Gustavo Guanabara](https://github.com/gustavoguanabara).
 
 O código foi refatorado para aplicar boas práticas de desenvolvimento, incluindo:
-- Interface visual interativa com Rich
+- Interface visual interativa com Rich (painéis de ~60 colunas)
 - Sistema de batalha completo com turnos
 - Eliminação de código duplicado
 - Padronização de retornos entre classes
@@ -227,8 +231,9 @@ O código foi refatorado para aplicar boas práticas de desenvolvimento, incluin
 ## 🖼️ Interface no Terminal
 
 O jogo utiliza:
-- **Painéis** (`Panel`) para organizar seções
-- **Barras de progresso** (`Progress`) para vida dos personagens
-- **Tabelas** (`Table`) para status final
+- **Painéis** (`Panel`, `width=60`) para organizar seções com tamanho adequado
+- **Barras de progresso** (`Progress`, `bar_width=25`) para vida dos personagens
+- **Tabelas** (`Table`, `width=60`) para status final
 - **Texto estilizado** (`Text`) para títulos e destaques
 - **Cores dinâmicas**: vermelho (perigo), verde (cura), amarelo (crítico), cyan (info)
+
