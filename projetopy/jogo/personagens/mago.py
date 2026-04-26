@@ -1,24 +1,26 @@
 from ..ficha import Personagem
 
 
-
 class Mago(Personagem):
-    def __init__(self, nome, vida):
+    """Representa um personagem mago no RPG.
+
+    Herda de Personagem e define golpes mágicos elementais típicos de um mago.
+    """
+
+    def __init__(self, nome: str, vida: int = 80) -> None:
+        """Inicializa um Mago.
+
+        Args:
+            nome: Nome do mago.
+            vida: Pontos de vida máximos. Padrão é 80.
+        """
         super().__init__(nome, vida)
-        self.golpes = ["Bola de fogo", "Descarga Elétrica",
-                       "Lançamento de Rocha", "Prisão aquática", "Explosão elemental"]
 
-    def curar(self):
-        if self.vida >= self.vida_maxima:
-            print(f"{self.nome} já está com a vida cheia!")
-            return 0
+        self.golpes: list[str] = [
+            "Bola de fogo",
+            "Descarga Elétrica",
+            "Lançamento de Rocha",
+            "Prisão aquática",
+            "Explosão elemental",
+        ]
 
-        cura = self.calcular_cura()
-        cura_real = min(cura, self.vida_maxima - self.vida)
-
-        self.vida += cura_real
-
-        print(
-            f"{self.nome} fez uma magia de cura e recuperou {cura_real} pontos de vida!")
-
-        return cura_real

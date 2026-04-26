@@ -1,24 +1,26 @@
 from ..ficha import Personagem
-from rich import print
 
 
 class Guerreiro(Personagem):
-    def __init__(self, nome, vida):
+    """Representa um personagem guerreiro no RPG.
+
+    Herda de Personagem e define golpes corpo a corpo típicos de um guerreiro.
+    """
+
+    def __init__(self, nome: str, vida: int = 120) -> None:
+        """Inicializa um Guerreiro.
+
+        Args:
+            nome: Nome do guerreiro.
+            vida: Pontos de vida máximos. Padrão é 120.
+        """
         super().__init__(nome, vida)
-        self.golpes = ["Soco direto", "Chute",
-                       "Rasteira", "Soco cruzado", "Chute Giratório"]
 
-    def curar(self):
-        if self.vida >= self.vida_maxima:
-            print(f"{self.nome} já está com a vida cheia!")
-            return 0
+        self.golpes: list[str] = [
+            "Soco direto",
+            "Chute",
+            "Rasteira",
+            "Soco cruzado",
+            "Chute Giratório",
+        ]
 
-        cura = self.calcular_cura()
-        cura_real = min(cura, self.vida_maxima - self.vida)
-
-        self.vida += cura_real
-
-        print(
-            f"[cyan]{self.nome}[/] enrolou uma atadura nos ferimentos e recuperou [green]{cura_real} pontos de vida[/]!")
-
-        return cura_real
